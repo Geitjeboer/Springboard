@@ -1,18 +1,8 @@
-﻿Model,Test_R^2,R^2,MAE
-"RF Gross, ROI, Net",0.9318,0.4946,71698611
-RF Gross,0.9437,0.6134,109383980
-RF ROI,0.9167,0.6731,1.9036
-RF Net Profit,0.929,0.5286,102125406
-XGBoost ROI,0.929,0.4491,108542072
-Linear Regression ROI,0.4694,0.418,73395377
-Linear Regression Gross,0.5562,0.5569,115733159
-SVR ROI,0.1047,0.093,2.5877
-RF Grid Search,0.8192,0.6875,1.8549
-,,,
-Hyper parameters,Features,,
-N_estimators:100,Budget,,
-max_depth:None,Rating Count,,
-Min_samples_split:2,Runtime,,
-min_samples_leave:2,Rating,,
-,Release Date,,
-,Genre_Frequency,,
+﻿Model,training_R^2,testing_R^2,MAE
+"RF Gross, ROI, Net",0.9241,0.4595,70442718.35
+RF Gross,0.9402,0.577,109427513.7
+RF ROI,0.9286,0.5161,2.4465
+RF Net Profit,0.9252,0.4922,101617691.7
+XGBoost Gross,0.6336,0.5799,107739359.1
+Linear Regression Gross,0.6345,0.6052,106232011.6
+SVR Gross,-0.0825,-0.0722,165470378.2
