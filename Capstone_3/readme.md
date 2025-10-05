@@ -6,10 +6,20 @@ In this project we will be looking at six types of WBCs:
 
 
 •	Immature Granules- These are precursors to mature white blood cells, and their presence indicates infection or cancer.
+
+
 •	Basophil- These are associated with allergies.
+
+
 •	Eosinophils- These are associated with allergies.
+
+
 •	Lymphocytes- These create a specific immune response by creating antibodies. They are also known as B cells, T cells, and Plasma cells. 
+
+
 •	Neutrophils- These respond to general bacterial infections and nonspecific immune reactions.
+
+
 •	Monocytes- These WBCs phagocytize pathogens. They are also known as mast cells when found in tissues.
 
 
