@@ -41,70 +41,42 @@ The erythroblasts and platelets were not used in this analysis. All other cell i
 ### EDA
 
 
-All images were resized to 64 x 64 pixels. A grey scale and RBG image resized set was created. The images were then made into arrays, flattened, and scaled by dividing by 255. These arrays were saved in pandas data frame labeled with their respective cell type.
-Two data frames were made, one for grey scale images and one for RBG images.
+All images were confirmed as RBG images and resized to 100 x 100 pixels. The images were then made into arrays, flattened, and scaled by dividing by 255. These arrays were saved in a pandas data frame labeled with their respective cell type.
 
 
 ### Modeling
 
 
-A K nearest neighbor model was created with the gray scale data set. Optimal KNN was found to be 15. The model evaluation can be seen in the metrics file under Notebooks.
+A K nearest neighbor model was created. Optimal KNN was found to be 13. The model evaluation can be seen in the metrics file under Notebooks.
 
 
-Because of poor performance no more modeling was preformed on the gray scale data frame.
+KNN performed poorly with an overall accuracy of 0.54 and bad ROC AUC scores.
 
 
-A K nearest neighbor model was created with the RBG data set. Optimal KNN was found to be 12. The model evaluation can be seen in the metrics file under Notebooks.	
+A random forest model was created using the data set. The model evaluation can be seen in the metrics file under Notebooks.
 
 
-The RBG images performed better than the gray scale. But still not the best results.
+The random forest model performs significantly better than the KNN with an accuracy of 0.79
 
 
-A random forest model was created using the RBG data set. The model evaluation can be seen in the metrics file under Notebooks.
-
-
-The random forest model performs significantly better than the KNN.
-
-
-A Tensor flow model was created using the RBG data frame. The model evaluation can be seen in the metrics file under Notebooks.
+A CNN model was created using the data frame. The model evaluation can be seen in the metrics file under Notebooks.
 	
 
-It performed significantly better than all other models as can easily be seen when comparing the AUCs. However, the k fold test does not match the overall model statistics.
-A grid search was performed on the TensorFlow model returning the best accuracy score of 0.79. The best parameters were the following:
+The CNN model worked significantly better than the other models. It had an accuracy score of 0.92 and all the ROC AUC scores were above 0.95. It only misclassified If cells which is common in analyzers. This error is what causes a manual differential to be ordered for lab testing.
 
 
-•	Batch size: 20
-
-
-•	Dropout rate: 0.1
-
-
-•	Epochs: 40
-
-
-•	Learning rate: 0.0005 
-
-
-•	Nodes: 32
-
-
-Using these parameters our final tensor flow model statistics were calculated.		
-
-
-The grid search parameters fixed the k fold discrepancy. It also increased the AUC for all cell types to above 0.90. This model was chosen as the best model for this project based on its statistics. Also, image processing works better with neuronets. 
+The CNN model was chosen as the best model for this project based on its statistics. Also, image processing works better with neuronets. 
 
 
 ### Discussion
 
 
-The final model created from this analysis performs very well. It has high AUC scores across the six chosen cell types, and an overall accuracy around 0.79.  Looking at the confusion matrix, we can see that the most misclassified images are immature granules. This makes sense because Ig cells are precursors to the other white blood cells and resemble their mature forms. 
+The final model created from this analysis performs very well. It has high AUC scores across the six chosen cell types, and an overall accuracy around 0.92.  Looking at the confusion matrix, we can see that the most misclassified images are immature granules. This makes sense because Ig cells are precursors to the other white blood cells and resemble their mature forms. Professional instrumentation also runs into similar classification issues and flags them for manual review. Current instrumentation has trouble recognizing the difference between Igs and mature cells.
 
 
-Professional instrumentation also runs into similar classification issues and flags them for manual review. Current instrumentation has trouble recognizing the difference between Igs and mature cells. Also, eosinophils are sometimes typed as neutrophils. This is an ongoing issue in hematology analyzers.
+The main suggestions for further research are to use the full-sized images (224 x 224) instead of scaling them down. Due to memory constraints this was not an option when performing data analysis. Using full size images may remove the discrepancies between Ig cells and other types. 
 
-
-The main suggestions for further research are to use the full-sized images (224 x 224) instead of scaling them down. Due to memory constraints this was not an option when performing data analysis. Using full size images may remove the discrepancies between Ig cells and other types. Also transforming the images in various ways to create a more robust data set could improve modeling. 
+Also transforming the images in various ways to create a more robust data set could improve modeling. 
 
 
 Image sources could influence modeling too. Using images sourced from the same microscope camera, slides, and stain decrease sample variation. If this model was to be used for diagnosis it would have to specify the microscope, stain and slide types it is compatible with. The model could be more marketable if it can show accurate results when testing cellular data from other microscope types, not just the CellaVision.
-
